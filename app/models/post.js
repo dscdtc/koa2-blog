@@ -12,6 +12,7 @@ const PostSchema = new Schema({
     title: String,
     content: String,
     pv: Number,
+    label: String,
     commentsCount: {
         type: Number,
         default: 0

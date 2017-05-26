@@ -15,7 +15,7 @@
             <h3><a href="/posts/<%= post._id %>"><%= post.title %></a></h3>
             <!-- post.content 是 markdown 转换成的 html 字符串-->
             <pre><%- post.content %></pre>
-            <div class="ui blue right ribbon label">Life</div>
+            <div class="ui <%= ({l: 'blue', c: 'red', n: 'teal'})[post.label] %> right ribbon label"><%= ({l: 'Life', c: 'Code', n: 'News'})[post.label] %></div>
             <div>
               <span class="tag"><%= post.meta.createAt %></span>
               <span class="tag right">

@@ -12,10 +12,18 @@
 
   <div class="eight wide column">
     <form class="ui form segment" method="post">
-      <div class="field required">
-        <label>标题</label>
-        <input type="text" name="title" required>
-      </div>
+        <div class="field required">
+            <label>标题</label>
+            <input type="text" name="title" required>
+        </div>
+        <div class="field required">
+          <label>分类</label>
+          <select class="ui compact selection dropdown" name="label">
+            <option value="l">Life</option>
+            <option value="c">Code</option>
+            <option value="n">News</option>
+          </select>
+        </div>
       <div class="field required">
           <label>正文</label>
           <textarea name="content" rows="15" required></textarea>

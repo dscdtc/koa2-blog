@@ -41,15 +41,19 @@ exports.create = async(ctx) => {
     let req = ctx.request.body;
     let author = ctx.session.user._id;
     let title = req.title;
+    let label = req.label;
     let content = req.content;
-
-    // 校验参数
+    console.log(label)
+        // 校验参数
     try {
         if (!author) {
             throw new Error('不要瞎搞，请先登录');
         }
         if (!title.length) {
             throw new Error('请填写标题');
+        }
+        if (!label.length) {
+            throw new Error('请选择分类');
         }
         if (!content.length) {
             throw new Error('请填写正文');
@@ -62,6 +66,7 @@ exports.create = async(ctx) => {
     let post = {
         author: author,
         title: title,
+        label: label,
         content: content,
         pv: 0
     };
