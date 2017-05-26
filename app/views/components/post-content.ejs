@@ -1,0 +1,41 @@
+<!--单篇文章的模板片段-->
+<div class="post-content">
+  <div class="ui grid">
+    <div class="four wide column">
+      <a class="avatar"
+        href="/posts?author=<%= post.author._id %>"
+        data-title="<%= post.author.name %> | <%= ({m: '♂', f: '♀', x: '*'})[post.author.gender] %>"
+        data-content="<%= post.author.bio %>">
+        <img class="avatar" src="/img/<%= post.author.avatar %>" alt="<%= post.author.name %>头像">
+      </a>
+    </div>
+
+    <div class="eight wide column">
+        <div class="ui container segment">
+            <h3><a href="/posts/<%= post._id %>"><%= post.title %></a></h3>
+            <!-- post.content 是 markdown 转换成的 html 字符串-->
+            <pre><%- post.content %></pre>
+            <div class="ui blue right ribbon label">Life</div>
+            <div>
+              <span class="tag"><%= post.meta.createAt %></span>
+              <span class="tag right">
+                <span>浏览(<%= post.pv %>)</span>
+                <span>留言(<%= post.commentsCount %>)</span>
+
+                <% if (user && post.author._id && user._id.toString() === post.author._id.toString()) {%>
+                  <div class="ui inline dropdown">
+                    <div class="text"></div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                      <div class="item"><a href="/posts/<%= post._id%>/edit">编辑</a></div>
+                      <div class="item"><a href="/posts/<%= post._id%>/remove">删除</a></div>
+                    </div>
+                  </div>
+                <% } %>
+
+              </span>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

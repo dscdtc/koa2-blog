@@ -1,0 +1,29 @@
+<div class="nav-setting">
+  <div class="ui buttons">
+    <div class="ui floating dropdown button">
+      <i class="icon bars"></i>
+      <div class="menu">
+        <% if (user) {%>
+            <div class="item" >
+                <a class="item" href="/posts?author=<%= user._id %>"><i class="teal home icon"></i>主页</a>
+            </div>
+            <div class="divider"></div>
+            <div class="item">
+                <a class="item" href="/posts/create"><i class="teal external icon"></i>发布</a>
+            </div>
+            <div class="item">
+                <a class="item" href="/signout"><i class="teal power icon"></i>注销</a>
+            </div>
+
+        <% } else {%>
+            <div class="item">
+                <a class="item" href="/signin"><i class="teal user icon"></i>登录</a>
+            </div>
+            <div class="item">
+                <a class="item" href="/signup"><i class="teal users icon"></i>注册</a>
+            </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+# Ignore everything in this directory
+*
+# Except this file
+!upload_502dddf9bde79994d516ef5e59e513d1.jpg
+!.gitignore

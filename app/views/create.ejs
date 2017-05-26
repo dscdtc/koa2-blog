@@ -1,0 +1,43 @@
+<%- include('header') %>
+
+<div class="ui grid">
+  <div class="four wide column">
+    <a class="avatar"
+      href="/posts?author=<%= user._id %>"
+      data-title="<%= user.name %> | <%= ({m: '男', f: '女', x: '保密'})[user.gender] %>"
+      data-content="<%= user.bio %>">
+      <img class="avatar" src="/img/<%= user.avatar %>" alt="<%= user.name %>头像">
+    </a>
+  </div>
+
+  <div class="eight wide column">
+    <form class="ui form segment" method="post">
+      <div class="field required">
+        <label>标题</label>
+        <input type="text" name="title" required>
+      </div>
+      <div class="field required">
+          <label>正文</label>
+          <textarea name="content" rows="15" required></textarea>
+      </div>
+      <input type="submit" class="ui fluid button" value="发布">
+    </form>
+  </div>
+</div>
+
+<script>
+  let simplemde = new SimpleMDE({
+    autosave: {
+        enabled: true,
+        uniqueId: "<%= user._id %>",
+        delay: 1000,
+    	styleSelectedText: true,
+    },
+    placeholder: "写点什么吧，支持md哟～",
+    forceSync: true,
+    autoDownloadFontAwesome:true,
+    tabSize: 4,
+  });
+</script>
+
+<%- include('footer') %>
