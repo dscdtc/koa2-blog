@@ -43,7 +43,7 @@ let Post = mongoose.model('Post', PostSchema);
 module.exports = {
     //创建文章
     create: function create(post) {
-        var post = new Post(post)
+        post = new Post(post)
         return post.save();
     },
 
@@ -109,8 +109,8 @@ module.exports = {
     },
 
     // 更新评论数
-    updateCommentsCount: async function updateCommentsCount(postId, updateNum) {
-        await Post.update({ _id: postId }, { $inc: { commentsCount: updateNum } });
+    updateCommentsCount: function updateCommentsCount(postId, updateNum) {
+        return Post.update({ _id: postId }, { $inc: { commentsCount: updateNum } });
     }
 
 };

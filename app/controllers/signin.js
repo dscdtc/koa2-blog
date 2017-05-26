@@ -28,7 +28,6 @@ exports.signin = async(ctx) => {
             ctx.redirect('/posts');
         }
     } catch (e) {
-        console.log(e.message)
         ctx.flash = { error: e.message };
         ctx.redirect('back');
     }

@@ -3,7 +3,6 @@
 const marked = require('marked')
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const PostModel = require('./post')
 
 const CommentSchema = new Schema({
     author: {
@@ -42,21 +41,13 @@ let Comment = mongoose.model('Comment', CommentSchema)
 module.exports = {
     // 创建留言
     create: function create(comment) {
-        var comment = new Comment(comment)
-        return Promise.all([
-            comment.save(),
-            // 更新Post中留言数
-            PostModel.updateCommentsCount(comment.postId, 1)
-        ]);
+        comment = new Comment(comment);
+        return comment.save();
     },
 
     // 通过用户 id 和留言 id 删除一个留言
-    delCommentById: function delCommentsById(commentId, postId, author) {
-        return Promise.all([
-            Comment.remove({ _id: commentId, author: author }).exec(),
-            // 更新Post中留言数
-            PostModel.updateCommentsCount(postId, -1)
-        ])
+    delCommentById: function delCommentsById(commentId, author) {
+        return Comment.remove({ _id: commentId, author: author }).exec();
     },
 
     // 通过文章 id 删除该文章下所有留言

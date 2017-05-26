@@ -43,7 +43,7 @@ let User = mongoose.model('User', UserSchema)
 module.exports = {
     // 注册用户
     create: function create(user) {
-        var user = new User(user)
+        user = new User(user)
         return user.save();
     },
 

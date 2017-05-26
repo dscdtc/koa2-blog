@@ -43,8 +43,7 @@ exports.create = async(ctx) => {
     let title = req.title;
     let label = req.label;
     let content = req.content;
-    console.log(label)
-        // 校验参数
+    // 校验参数
     try {
         if (!author) {
             throw new Error('不要瞎搞，请先登录');
@@ -196,7 +195,10 @@ exports.comment = async(ctx) => {
             postId: postId,
             content: content
         }
-        await CommentModel.create(comment);
+        await Promise.all([
+            CommentModel.create(comment),
+            PostModel.updateCommentsCount(postId, 1)
+        ]);
     } catch (e) {
         ctx.flash = { error: e.message };
         return ctx.redirect('back');
@@ -212,7 +214,10 @@ exports.commentDel = async(ctx) => {
     let postId = ctx.request.url.split('/')[2];
     let author = ctx.session.user._id;
     try {
-        await CommentModel.delCommentById(commentId, postId, author);
+        await Promise.all([
+            CommentModel.delCommentById(commentId, author),
+            PostModel.updateCommentsCount(postId, -1)
+        ]);
     } catch (e) {
         ctx.flash = { error: e.message };
         return ctx.redirect('back');
