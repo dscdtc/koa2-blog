@@ -49,7 +49,7 @@ exports.signup = async(ctx) => {
     // 检测用户名唯一
     let nameCheck = await UserModel.getUserByName(name)
     if (!nameCheck) {
-        let user = {
+        var user = {
             name: name,
             password: md5(password),
             avatar: avatar,
@@ -67,21 +67,20 @@ exports.signup = async(ctx) => {
 
     // 存入数据库
     try {
-        let result = await UserModel.create(user);
         // 此 user 是插入 mongodb 后的值，包含 _id
-        user = result;
+        user = await UserModel.create(user);
         // 将用户信息存入 session
         delete user.password;
         ctx.session.user = user;
     } catch (e) {
         //注册失败，异步删除上传头像
         fs.unlink(req.files.avatar.path, function() {
-            console.log('removed avatar file')
+            console.log('removed avatar file');
         });
         console.log(e.message);
-        ctx.flash = { error: '用户保存失败，请重试' }
-        return ctx.redirect('back')
+        ctx.flash = { error: '用户保存失败，请重试' };
+        return ctx.redirect('back');
     }
-    ctx.flash = { success: '注册成功' }
-    return ctx.redirect('/posts')
+    ctx.flash = { success: '注册成功' };
+    return ctx.redirect('/posts');
 }
