@@ -1,42 +1,46 @@
 {
-  "name": "koa2-blog",
-  "version": "0.0.1",
-  "description": "rebuild Private-Blog project base on Koa2",
-  "main": "index.js",
-  "scripts": {
-    "test": "supervisor index",
-    "start": "node --harmony index"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/dscdtc/koa2-blog.git"
-  },
-  "keywords": [
-    "koa2"
-  ],
-  "author": "dscdtc",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/dscdtc/koa2-blog/issues"
-  },
-  "homepage": "https://github.com/dscdtc/koa2-blog#readme",
-  "dependencies": {
-    "highlight.js": "9.11.0",
-    "koa": "2.2.0",
-    "koa-body": "2.0.1",
-    "koa-convert": "1.2.0",
-    "koa-ejs": "4.0.0",
-    "koa-flash": "1.0.0",
-    "koa-logger": "3.0.0",
-    "koa-router": "7.2.0",
-    "koa-session": "5.0.0",
-    "koa-static": "3.0.0",
-    "marked": "0.3.6",
-    "md5": "2.2.1",
-    "moment": "2.18.1",
-    "mongoose": "4.10.2"
-  },
-  "devDependencies": {
-    "koa-logger": "3.0.0"
-  }
+    "name": "koa2-blog",
+    "version": "0.0.1",
+    "description": "rebuild Private-Blog project base on Koa2",
+    "main": "index.js",
+    "scripts": {
+        "test": "supervisor index",
+        "start": "node --harmony index",
+        "heroku": "node --harmony index"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/dscdtc/koa2-blog.git"
+    },
+    "keywords": [
+        "koa2"
+    ],
+    "author": "dscdtc",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/dscdtc/koa2-blog/issues"
+    },
+    "homepage": "https://github.com/dscdtc/koa2-blog#readme",
+    "engines": {
+        "node": "7.9.0"
+    },
+    "dependencies": {
+        "highlight.js": "9.11.0",
+        "koa": "2.2.0",
+        "koa-body": "2.0.1",
+        "koa-convert": "1.2.0",
+        "koa-ejs": "4.0.0",
+        "koa-flash": "1.0.0",
+        "koa-logger": "3.0.0",
+        "koa-router": "7.2.0",
+        "koa-session": "5.0.0",
+        "koa-static": "3.0.0",
+        "marked": "0.3.6",
+        "md5": "2.2.1",
+        "moment": "2.18.1",
+        "mongoose": "4.10.2"
+    },
+    "devDependencies": {
+        "koa-logger": "3.0.0"
+    }
 }
