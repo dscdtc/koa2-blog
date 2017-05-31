@@ -14,8 +14,8 @@ const session = require('koa-session');
 //koa@1 middleware
 const flash = require('koa-flash');
 
-const config = require('./config/default');
-// const config = require('./config/production');
+// const config = require('./config/default');
+const config = require('./config/production');
 const router = require('./app/controllers/routes')();
 // 遍历引入数据模型
 const models_path = path.join(__dirname, './app/models');
