@@ -1,6 +1,7 @@
 'use strict'
-const marked = require('marked')
-const mongoose = require('mongoose')
+const marked = require('marked');
+const mongoose = require('mongoose');
+const moment = require('moment');
 const Schema = mongoose.Schema
 const CommentModel = require('./comment');
 
@@ -19,21 +20,20 @@ const PostSchema = new Schema({
     },
     meta: {
         createAt: {
-            type: Date,
-            dafault: Date.now()
+            type: String
         },
         updateAt: {
-            type: Date,
-            dafault: Date.now()
+            type: Date
         }
     }
 })
 
 PostSchema.pre('save', function(next) {
     if (this.isNew) {
-        this.meta.createAt = this.meta.updateAt = Date.now()
+        console.log()
+        this.meta.createAt = this.meta.updateAt = moment().format("YY-MM-DD h:m:s")
     } else {
-        this.meta.updateAt = Date.now()
+        this.meta.updateAt = moment().format("YY-MM-DD h:m:s")
     }
 
     next()
